@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Crea los juicios</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="NewEstateUtils/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link href="bootstrapUtils/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link href="bootstrapUtils/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/noui/nouislider.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/css/util.css">
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/css/main.css">
+    <!--===============================================================================================-->
+    <style>
+    .flotante {
+        display:scroll;
+        position:fixed;
+        margin-top:1%; 
+        margin-left:63%;
+        width: 200px;
+    }
+    .flotante2 {
+        display:scroll;
+        position:fixed;
+        margin-top:5%; 
+        margin-left:63%;
+        width: 200px;
+    }
+    .navbar-brand{
+        display: inline-block;
+	    padding-top: .3125rem;
+	    padding-bottom: .3125rem;
+	    margin-right: 1rem;
+	    font-size: 1.25rem;
+	    line-height: inherit;
+	    white-space: nowrap;
+	    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    }
+    </style>
+
+</head>
+<body  background="bootstrapUtils/img/bg-callout.jpg" >
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Juicio Maker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container-contact100" style="background-image:url('bootstrapUtils/img/bg-callout.jpg');">
+	    <div class="wrap-contact100 center" id="logIn" >
+		      <form class="contact100-form validate-form">
+		          <span class="contact100-form-title">
+		              Inicia Sesión
+		          </span>
+		
+		          <div class="wrap-input100 bg1">
+		              <span class="label-input100">Usuario</span>
+		              <input class="input100" type="text" id="usuario" placeholder="Ingresa tu nombre de usuario">
+		          </div>
+		          
+		          <div class="wrap-input100 bg1">
+		              <span class="label-input100">Contraseña</span>
+		              <input class="input100" type="password" id="contraseña" placeholder="Ingresa tu contraseña">
+		          </div>
+		   	 </form>
+		   	 
+		   	 <div class="container-contact100-form-btn">
+                <button type="button" class="contact100-form-btn" onclick="login();">
+                    <span>
+                        A crear!
+                    </span>
+                </button>
+            </div>
+		   	 
+		   	<div id="ErrorDiv"></div>
+		   	
+	    </div>
+	    
+    </div>
+    
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/bootstrap/js/popper.js"></script>
+	<script src="NewEstateUtils/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/daterangepicker/moment.min.js"></script>
+	<script src="NewEstateUtils/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/noui/nouislider.min.js"></script>
+
+    <script src="NewEstateUtils/js/main.js"></script>
+    <script src="NewEstateUtils/js/notify.js"></script>
+    <script src="NewEstateUtils/js/notify.min.js"></script>
+
+
+    <script type="text/javascript">
+      function login(){
+        $.ajax({
+            url : 'login',
+            type: 'Post',
+            data : {
+                user: $('#usuario').val(),
+                pass : $('#contraseña').val(),
+            },
+            success : function(responseText) {
+            	if(responseText=="Login success"){
+					window.location.href = "MostrarJuicios.html";
+				}else{
+					//$('#ErrorDiv').text(responseText);
+					var div = "<div class='alert alert-danger fade in' style='opacity:1; margin-top:5%;'>";
+					div += "<a href='#' class='close' data-dismiss='alert'>&times;</a><strong>Error!</strong>";
+					div += "El usuario o la contraseña no se reconocen";
+					div += "</div>";
+					$('#ErrorDiv').append(div);
+					console.log("Llegue aca");
+				}
+            }
+        });
+      }; 
+    </script>
+
+</body>
+</html>

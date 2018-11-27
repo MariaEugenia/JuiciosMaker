@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mostrar Juicios</title>
+
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="NewEstateUtils/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link href="bootstrapUtils/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link href="bootstrapUtils/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/noui/nouislider.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/css/util.css">
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/css/main.css">
+    <!--===============================================================================================-->
+    
+    <style>
+    .flotante {
+        display:scroll;
+        position:fixed;
+        margin-top:-15%; 
+        margin-left:40%;
+        width: 200px;
+        z-index: 1; 
+        position:absolute;
+    }
+    .flotante2 {
+        display:scroll;
+        position:fixed;
+        margin-top:-10%; 
+        margin-left:40%;
+        width: 200px;   
+        z-index: 1; 
+        position:absolute;
+    }
+    </style>
+    
+</head>
+<body>
+
+<div class="container-contact100">
+
+	<span class="contact100-form-title">
+	    Revisa los juicios de tus alumnos
+	</span>
+	
+
+ 	<div class="wrap-input100 input100-select bg1">
+	    <span class="label-input100">Elige el período para ver *</span>
+	    <div>
+	        <select class="js-select2" id="mes">
+	            <option></option>
+	            <option value="marzoabril">Marzo - Abril</option>
+	            <option value="mayo">Mayo</option>
+	            <option value="juniojulio">Junio - Julio</option>
+	            <option value="agosto">Agosto</option>
+	            <option value="setiembreoctubre">Setiembre - Octubre</option>
+	            <option value="noviembre">Noviembre - Diciembre</option>
+	        </select>
+	    </div>
+    </div>
+    <div class="wrap-contact100-form-radio" id="grupo">
+		<span class="label-input100">Grupo</span>
+		<div class="contact100-form-radio m-t-15">
+			<input class="input-radio100" id="radio1" type="radio" name="grupo" value="1" checked="checked">
+			<label class="label-radio100" for="radio1">
+				Segundo
+			</label>
+		</div>
+		<div class="contact100-form-radio">
+			<input class="input-radio100" id="radio2" type="radio" name="grupo" value="0">
+			<label class="label-radio100" for="radio2">
+				Cuarto
+			</label>
+		</div>
+
+	</div>
+	
+	<div class="container-contact100-form-btn">
+       <button type="button" class="contact100-form-btn" onclick="loadTable();" style="width: 25%;">
+           <span>
+               Mostrar Juicios
+               <i class="fas fa-arrow-circle-right" aria-hidden="true"></i>
+           </span>
+       </button>
+       <button type="button" class="contact100-form-btn" onclick="window.location.href='createJuicio.html'" style="width: 25%;">
+           <span>
+               Crear Juicio
+               <i class="fas fa-arrow-circle-right" aria-hidden="true"></i>
+           </span>
+       </button>
+   </div>
+    
+   <div class="container-contact100-form-btn">
+	    <div class="wrap-contact100" id="formCreateUser" style="width: 1200px;">
+	    <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>Alumno</th>
+	        <th>Jucio</th>
+	        <th>Nota</th>
+	        <th>Acciones</th>
+	      </tr>
+	    </thead>
+	    <tbody id="tablebody">
+	    </tbody>
+	  </table>
+	  </div>
+   </div>
+  
+  <div class="modal" tabindex="-1" role="dialog" id="myModal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title label-input100">Editar juicio de: </h5>
+	        <h5 class="modal-title label-input100" id ="alumnoedit"> </h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="wrap-input100 bg1">
+                <span class="label-input100">Juicio</span>
+                <textarea class="input100" type="text" id="outjuicio" placeholder="" style="height: 200px;">
+                </textarea>
+            </div>
+            <h5 class="modal-title label-input100" >MES: </h5>
+	        <h5 class="modal-title label-input100" id ="mesedit"></h5>
+	        <h5 class="modal-title label-input100" >NOTA: </h5>
+	        <h5 class="modal-title label-input100" id ="notaedit"></h5>
+	      </div>
+	      <div class="modal-footer">
+	      		<div class="container-contact100-form-btn">
+                	<button type="button" class="contact100-form-btn" onclick="editarJuicioDB();">
+	                    <span>
+	                        Guardar cambios
+	                    </span>
+	                </button>
+	            </div>
+	            <div class="container-contact100-form-btn">
+	            <button type="button" class="contact100-form-btn" data-dismiss="modal">
+	                    <span>
+	                        Close
+	                    </span>
+	                </button>
+	        	</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	  <div class="modal" tabindex="-1" role="dialog" id="ModalHistorialJuicios">
+	  <div class="modal-dialog" role="document" >
+	    <div class="modal-content" style="width: 1300px; margin-left: -80%;">
+	      <div class="modal-header">
+	        <h5 class="modal-title label-input100">Ver Juicio de: </h5>
+	        <h5 class="modal-title label-input100" id ="alumnover"> </h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body" id="JuiciosAlumno" style="width: 100%;">
+	    </div>
+	  </div>
+	</div>
+                  
+                
+     
+</div>
+</div>
+
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/bootstrap/js/popper.js"></script>
+	<script src="NewEstateUtils/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/select2/select2.min.js"></script>
+    <script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20
+			});
+		})
+	</script>
+
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/daterangepicker/moment.min.js"></script>
+	<script src="NewEstateUtils/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/noui/nouislider.min.js"></script>
+
+    <script src="NewEstateUtils/js/main.js"></script>
+    <script src="NewEstateUtils/js/notify.js"></script>
+    <script src="NewEstateUtils/js/notify.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+    
+    <script>
+    	function loadTable()
+    	{
+    		var ratesgrupo = document.getElementsByName('grupo');
+            var grupo;
+            for(var i = 0; i < ratesgrupo.length; i++){
+                if(ratesgrupo[i].checked){
+                    grupo = ratesgrupo[i].value;
+                }
+            }
+    		$.ajax({
+                url : 'ServletJuicios',
+                type: 'Get',
+                data : {
+                    mes : document.getElementById("mes").value,
+                    grupo : grupo
+                },
+                success : function(response) {
+                	var i;
+                	var table;
+                    for (i = 0; i < response.length; i++) { 
+                    	table += "<tr><td>"+response[i].alumno+"</td><td>"+response[i].juicio+"</td><td>"+response[i].nota+"</td><td><i class='fas fa-edit' onclick=\"editarJuicio('"+response[i].alumno+"','"+response[i].mes+"','"+response[i].juicio+"','"+response[i].nota+"');\"></i>";
+                    	table +=" <i class='fas fa-sign-in-alt' onclick=\"verJuiciosalumno('"+response[i].alumno+"');\"></i>";
+                    	table+="</td></tr>";
+                    }
+                    $("#tablebody").html(table);
+                }
+            });
+    	};
+    	/*
+    	$(".js-select2").change(function(){
+    		loadTable();
+    	});
+    	*/
+    </script>
+
+	<script>
+		function editarJuicio(alumno,mes,juicio,nota){
+			document.getElementById("outjuicio").value = juicio;
+			$("#alumnoedit").html(alumno);
+			$("#mesedit").html(mes);
+			$("#notaedit").html(nota);
+			$('#myModal').modal('show');
+		};
+		function verJuiciosalumno(alumno){
+			$("#alumnover").html(alumno);
+	    	$.ajax({
+	            url : 'ServletJuicios',
+	            type: 'Post',
+	            data : {
+	                alumno : alumno,
+	                juiciosalumno : 'verdadero'
+	            },
+	            success : function(response) {
+	            	var i;
+	            	for (i = 0; i < response.length; i++) { 
+	            		if (response[i].mes=="marzoabril"){
+	                        $("#marzoabril").html(response[i].juicio);
+	                        $("#notamarzoabril").html("NOTA: "+response[i].nota);
+	            		}else if (response[i].mes=="mayo"){
+	            			$("#mayo").html(response[i].juicio);
+	            			$("#notamayo").html("NOTA: "+response[i].nota);
+	            		}else if (response[i].mes=="juniojulio"){
+	            			$("#juniojulio").html(response[i].juicio);
+	            			$("#notajuniojulio").html("NOTA: "+response[i].nota);
+	            		}else if (response[i].mes=="agosto"){
+	            			$("#agosto").html(response[i].juicio);
+	            			$("#notaagosto").html("NOTA: "+response[i].nota);
+	            		}else if (response[i].mes=="setiembreoctubre"){
+	            			$("#setiembreoctubre").html(response[i].juicio);
+	            			$("#notasetiembreoctubre").html("NOTA: "+response[i].nota);
+	            		}else if (response[i].mes=="noviembre"){
+	            			$("#noviembre").html(response[i].juicio);
+	            			$("#notanoviembre").html("NOTA: "+response[i].nota);
+	            		}
+	            	}
+	            }
+	        });
+	    	$("#JuiciosAlumno").load("JuiciosAlumno.html");
+			$('#ModalHistorialJuicios').modal('show');
+		};
+		function editarJuicioDB(){
+			$.ajax({
+	            url : 'ServletJuicios',
+	            type: 'Post',
+	            data : {
+	                jucio: $('#outjuicio').val(),
+	                alumno : $('#alumnoedit').html(),
+	                mes : $('#mesedit').html(),
+	                nota : $('#notaedit').html(),
+	                editar : 'verdadero'
+	            },
+	            success : function(responseText) {
+	            	$.notify(' Juicio editado', {
+	              	  style: 'OKNotification'
+	              	});
+	            }
+	        });
+			$('#myModal').modal('hide');
+		}
+	</script>
+	
+	<script>
+    $.notify.addStyle('OKNotification', {
+    	  html: "<div><i class='fas fa-id-card'></i> <span data-notify-text/></div>",
+    	  classes: {
+    	    base: {
+    	      //"white-space": "nowrap",
+    	      "background-color": "#00ad5f",//"lightblue",
+    	      "color": "white",
+    	      "padding": "20px",
+    	      "border-radius": "25px",
+    	      "font-family": "Montserrat-Medium",
+    	      "font-size": "16px",
+    	      "line-height": "1.2",
+    	      "padding-right": "15px"
+    	    },
+    	    superblue: {
+    	      "color": "white",
+    	      "background-color": "blue"
+    	    }
+    	  }
+    	});
+    </script>
+    
+    
+
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Crea los juicios</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="NewEstateUtils/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link href="bootstrapUtils/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link href="bootstrapUtils/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/vendor/noui/nouislider.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/css/util.css">
+    <link rel="stylesheet" type="text/css" href="NewEstateUtils/css/main.css">
+    <!--===============================================================================================-->
+    <style>
+    .flotante {
+        display:scroll;
+        position:fixed;
+        margin-top:1%; 
+        margin-left:63%;
+        width: 200px;
+    }
+    .flotante2 {
+        display:scroll;
+        position:fixed;
+        margin-top:5%; 
+        margin-left:63%;
+        width: 200px;
+    }
+    </style>
+
+</head>
+<body>
+
+
+    <div class="container-contact100">
+
+        <div class="wrap-contact100" id="formCreateUser" >
+            <form class="contact100-form validate-form">
+                <span class="contact100-form-title">
+                    Crea juicios para tus alumnos
+                </span>
+
+                <a class="flotante contact100-form-btn" href="#" onclick="clearForm();" style="color:white">Borrar formulario</a>
+                <a class="flotante2 contact100-form-btn" href="MostrarJuicios.html" onclick="clearForm();" style="color:white">Ver Juicios</a>
+
+                <div class="wrap-input100 rs1-wrap-input100 validate-input bg1" data-validate="Por favor ingresa el nombre">
+                    <span class="label-input100">Nombre del alumno *</span>
+                    <input class="input100" type="text" id="name" placeholder="Ingresa el nombre">
+                </div>
+                
+                <div class="wrap-input100 rs1-wrap-input100 validate-input bg1" data-validate="Por favor ingresa el número de lista">
+                    <span class="label-input100">Número de lista *</span>
+                    <input class="input100" type="number" id="numerolista" placeholder="Ingresa el número">
+                </div>
+
+                <div class="wrap-contact100-form-radio" id="mes">
+						<span class="label-input100">Mes del juicio</span>
+
+						<div class="contact100-form-radio m-t-15">
+							<input class="input-radio100" id="radio1" type="radio" name="mes" value="marzoabril" checked="checked">
+							<label class="label-radio100" for="radio1">
+								Marzo - Abril
+							</label>
+						</div>
+
+						<div class="contact100-form-radio">
+							<input class="input-radio100" id="radio2" type="radio" name="mes" value="mayo">
+							<label class="label-radio100" for="radio2">
+								Mayo
+							</label>
+						</div>
+
+						<div class="contact100-form-radio">
+							<input class="input-radio100" id="radio3" type="radio" name="mes" value="juniojulio">
+							<label class="label-radio100" for="radio3">
+								Junio - Julio
+							</label>
+                        </div>
+                        
+                        <div class="contact100-form-radio">
+							<input class="input-radio100" id="radio4" type="radio" name="mes" value="agosto">
+							<label class="label-radio100" for="radio4">
+								Agosto
+							</label>
+                        </div>
+                        <div class="contact100-form-radio">
+							<input class="input-radio100" id="radio5" type="radio" name="mes" value="setiembreoctubre">
+							<label class="label-radio100" for="radio5">
+								Setiembre - Octubre
+							</label>
+                        </div>
+                        
+                        <div class="contact100-form-radio">
+							<input class="input-radio100" id="radio6" type="radio" name="mes" value="noviembre">
+							<label class="label-radio100" for="radio6">
+								Noviembre - Diciembre
+							</label>
+						</div>
+				</div>
+				
+				<div class="wrap-contact100-form-radio" id="grupo">
+						<span class="label-input100">Grupo</span>
+
+						<div class="contact100-form-radio m-t-15">
+							<input class="input-radio100" id="radiosegundo" type="radio" name="grupo" value="1" checked="checked">
+							<label class="label-radio100" for="radiosegundo">
+								Segundo
+							</label>
+						</div>
+
+						<div class="contact100-form-radio">
+							<input class="input-radio100" id="radiocuardo" type="radio" name="grupo" value="0">
+							<label class="label-radio100" for="radiocuardo">
+								Cuarto
+							</label>
+						</div>
+
+				</div>
+				
+
+                <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Su actitud respecto al curso *</span>
+                    <div>
+                        <select class="js-select2" id="curso">
+                            <option></option>
+                            <option>Se lo ve comprometido con el curso</option>
+                            <option>Se lo ve motivado con el curso</option>
+                            <option>Demuestra interés en la asignatura</option>
+                            <option>Muestra disposición al trabajo</option>
+                            <option>Muestra interés en el aprendizaje de nuevos temas</option>
+                            <option>Su actitud de trabajo lo favorece en la comprensión de los contenidos</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Trabajo en clase *</span>
+                    <div>
+                        <select class="js-select2" id="clase">
+                            <option></option>
+                            <option>Trabaja de forma adecuada en clase</option>
+                            <option>Trabaja en las actividades planteadas de forma aceptable</option>
+                            <option>Ha trabajado más comprometido con el curso, consultando dudas y participando.</option>
+                            <option>Sus aportes en clase enriquecen al grupo</option>
+                            <option>Trabaja de muy buena manera en las actividades planteadas, y participa acertadamente en clase</option>
+                            <option>Trabaja de forma desordenada en clase</option>
+                            <option>Interviene de forma correcta en la clase</option>
+                            <option>Participa activamente de la clase</option>
+                            <option>La docente debe intervenir para que trabaje correctamente en clase</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Trabajo en el práctico *</span>
+                    <div>
+                        <select class="js-select2" id="practicos">
+                            <option></option>
+                            <option>Trabaja activamente en el práctico</option>
+                            <option>Trabaja correctamente en el práctico</option>
+                            <option>Realiza los prácticos en clase de manera grupal</option>
+                            <option>No consigue finalizar los prácticos</option>
+                            <option>La docente debe intervenir para que mantenga la concentración en el práctico</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Trabajo en grupos *</span>
+                    <div>
+                        <select class="js-select2" id="grupos">
+                            <option></option>
+                            <option>Coopera en el trabajo en equipo</option>
+                            <option>Trabaja en equipo correctamente</option>
+                            <option>Debe mejorar el trabajo en equipo</option>
+                            <option>Se le recomienda trabajar más en equipo</option>
+                            <option>Colabora con los compañeros cuando se lo piden</option>
+                            <option>Enriquece al grupo con sus aportes</option>
+                            <option>Se dispersa, lo que lo afecta a él y a sus compañeros</option>
+                            <option>Se le recomienda cambiar de grupo de estudio para mantener la concentración</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Trae los materiales *</span>
+                    <div>
+                        <select class="js-select2" id="materiales">
+                            <option></option>
+                            <option>Trae los materiales a la clase</option>
+                            <option>Olvida en práctico y debe trabajar con los compañeros para completarlo</option>
+                            <option>Pide el material a los compañeros de forma regular</option>
+                            <option>Trae materiales nuevos para aportar al curso</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Resultado en los escritos *</span>
+                    <div>
+                        <select class="js-select2" id="escritos">
+                            <option></option>
+                            <option>Ha demostrado un buen desempeño en las evaluaciones escritas</option>
+                            <option>No descuidar las evaluaciones escritas</option>
+                            <option>Debe estudiar para las evaluaciones escritas</option>
+                            <option>Debe presentarse a las evaluaciones escritas</option>
+                            <option>Se destaca su rendimiento en la prueba escrita</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Realiza tarea domiciliaria *</span>
+                    <div>
+                        <select class="js-select2" id="tareasdomiciliarias">
+                            <option></option>
+                            <option>Cumple con las tarea domiciliarias</option>
+                            <option>Entrega la tarea domiciliaria en tiempo y forma</option>
+                            <option>Cumple con las tareas domiciliarias planteadas en tiempo y con muy buenos resultados</option>
+                            <option>Realiza las tareas domiciliarias, pero no en el tiempo determinado</option>
+                            <option>Realiza las tareas domiciliarias, pero no en la forma esperada</option>
+                            <option>Debe entregar las tareas domiciliarias solicitadas</option>
+                        </select>
+                    </div>
+                </div>
+
+                 <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Realiza la PAM *</span>
+                    <div>
+                        <select class="js-select2" id="pam">
+                            <option></option>
+                            <option>Cumple en tiempo y forma con las actividades de PAM</option>
+                            <option>No cumple con las actividades de PAM</option>
+                            <option>Debe cumplir con las actividades de PAM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="wrap-input100 bg1">
+                    <span class="label-input100">Extra</span>
+                    <input class="input100" type="text" id="extra" placeholder="Ingresa información extra">
+                </div>
+
+                <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Consejo final *</span>
+                    <div>
+                        <select class="js-select2" id="consejofinalfeliz">
+                            <option></option>
+                            <option>Se lo alienta a continuar trabajando así</option>
+                            <option>Se lo invita a participar activamente de la clase</option>
+                            <option>Se le aconseja que trabaje en equipo para superarse</option>
+                            <option>Se lo felicita y alienta a continuar trabajando así.</option>
+                            <option>Se lo invita a mantener la actitud de trabajo</option>
+                            <option>Se lo alienta a trabajar en equipo para lograr mejores resultados</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="wrap-input100 input100-select bg1">
+                    <span class="label-input100">Consejo final *</span>
+                    <div>
+                        <select class="js-select2" id="consejofinaltriste">
+                            <option></option>
+                            <option>Debe comprometerse aún más con el curso</option>
+                            <option>Se le recomienda estudiar aún más para las evaluaciones escritas</option>
+                            <option>Se le aconseja que trabaje en equipo para superarse</option>
+                            <option>Se le recomienda mejorar su actitud de clase</option>
+                            <option>Debe cambiar la actitud de trabajo para superarse</option>
+                            <option>Debe estudiar aún más para conseguir mejores resultados</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="container-contact100-form-btn">
+                    <button type="button" class="contact100-form-btn" onclick="crearJuicio();">
+                        <span>
+                            Crear
+                            <i class="fas fa-arrow-circle-down" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </form>
+<hr>
+            <div id="UserProfile" style="text-align: center;"></div>
+
+            <div class="wrap-input100 bg1">
+                <span class="label-input100">Juicio</span>
+                <textarea class="input100" type="text" id="outjuicio" placeholder="" style="height: 200px;" onKeyDown="cuenta()" onKeyUp="cuenta()">
+                </textarea>
+                <span class="label-input100" style="position: absolute; margin-left: 80%;margin-top: 20px;" id="count">CHAR: 0</span>
+            </div>
+            
+            <div class="wrap-input100 rs1-wrap-input100 bg1">
+	              <span class="label-input100">Nota *</span>
+	              <input class="input100" type="number" id="nota" placeholder="Ingresa el número">
+	          </div>
+
+            <div class="container-contact100-form-btn">
+                <button type="button" class="contact100-form-btn" onclick="subirJuicio();">
+                    <span>
+                        Subir Juicio
+                        <i class="fas fa-arrow-circle-right" aria-hidden="true"></i>
+                    </span>
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/bootstrap/js/popper.js"></script>
+	<script src="NewEstateUtils/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/select2/select2.min.js"></script>
+    <script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20
+			});
+
+		})
+	</script>
+
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/daterangepicker/moment.min.js"></script>
+	<script src="NewEstateUtils/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+	<script src="NewEstateUtils/vendor/noui/nouislider.min.js"></script>
+
+    <script src="NewEstateUtils/js/main.js"></script>
+    <script src="NewEstateUtils/js/notify.js"></script>
+    <script src="NewEstateUtils/js/notify.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+
+
+    <script type="text/javascript">
+      function crearJuicio(){
+        var juicio = "";
+        //juicio += document.getElementsByTagName("option")[curso].value;
+        juicio += document.getElementById("curso").value + " ";
+        juicio += document.getElementById("clase").value + " ";
+        juicio += document.getElementById("practicos").value + " ";
+        juicio += document.getElementById("grupos").value + " ";
+        juicio += document.getElementById("materiales").value + " ";
+        juicio += document.getElementById("escritos").value + " ";
+        juicio += document.getElementById("tareasdomiciliarias").value + " ";
+        juicio += document.getElementById("pam").value + " ";
+        juicio += document.getElementById("extra").value + " ";
+        juicio += document.getElementById("consejofinalfeliz").value + " ";
+        juicio += document.getElementById("consejofinaltriste").value + " ";
+        document.getElementById("outjuicio").value = juicio;
+        //$('#UserProfile').append(juicio);
+      };
+      function clearForm(){
+        document.getElementById("name").value = " ";
+        document.getElementById("numerolista").value = " ";
+        document.getElementById("nota").value = " ";
+        document.getElementById("curso").selectedIndex = 0;
+        document.getElementById("clase").selectedIndex = 0;
+        document.getElementById("practicos").selectedIndex = 0;
+        document.getElementById("grupos").selectedIndex = 0;
+        document.getElementById("materiales").selectedIndex = 0;
+        document.getElementById("escritos").selectedIndex = 0;
+        document.getElementById("tareasdomiciliarias").selectedIndex = 0;
+        document.getElementById("pam").selectedIndex = " ";
+        document.getElementById("extra").value = " ";
+        document.getElementById("consejofinalfeliz").selectedIndex = 0;
+        document.getElementById("consejofinaltriste").selectedIndex = 0;
+        document.getElementById("outjuicio").value = " ";
+        $( ".js-select2" ).change();
+      };
+      function subirJuicio(){
+          var rates = document.getElementsByName('mes');
+            var mes;
+            for(var i = 0; i < rates.length; i++){
+                if(rates[i].checked){
+                    mes = rates[i].value;
+                }
+            };
+            var ratesgrupo = document.getElementsByName('grupo');
+            var grupo;
+            for(var j = 0; j < ratesgrupo.length; j++){
+                if(ratesgrupo[j].checked){
+                    grupo = ratesgrupo[j].value;
+                }
+            };
+            var nota;
+            if ($('#nota').val() == ""){
+            	nota = 0;
+            }else{
+            	nota = $('#nota').val();
+            }
+        $.ajax({
+            url : 'ServletJuicios',
+            type: 'Post',
+            data : {
+                jucio: $('#outjuicio').val(),
+                alumno : $('#name').val(),
+                grupo : grupo,
+                mes : mes,
+                numero: $('#numerolista').val(),
+                nota : nota
+            },
+            success : function(responseText) {
+            	$.notify(' Juicio creado', {
+              	  style: 'OKNotification'
+              	});
+            }
+        });
+      }; 
+    </script>
+    <script>
+        // A $( document ).ready() block.
+        function cuenta() {
+            $('#count').text("CHAR: "+ document.getElementById("outjuicio").value.length);
+        };
+    </script>
+    <script>
+    $.notify.addStyle('OKNotification', {
+    	  html: "<div><i class='fas fa-id-card'></i> <span data-notify-text/></div>",
+    	  classes: {
+    	    base: {
+    	      //"white-space": "nowrap",
+    	      "background-color": "#00ad5f",//"lightblue",
+    	      "color": "white",
+    	      "padding": "20px",
+    	      "border-radius": "25px",
+    	      "font-family": "Montserrat-Medium",
+    	      "font-size": "16px",
+    	      "line-height": "1.2",
+    	      "padding-right": "15px"
+    	    },
+    	    superblue: {
+    	      "color": "white",
+    	      "background-color": "blue"
+    	    }
+    	  }
+    	});
+    </script>
+
+</body>
+</html>
