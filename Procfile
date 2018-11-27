@@ -1,2 +1,2 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* JuiciosMaker
+web: java $JAVA_OPTS -cp JuiciosMaker.jar
 
