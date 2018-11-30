@@ -14,21 +14,14 @@ public class JuicioMaker {
 	  // create a java mysql database connection
 	  
 	  //LOCAL//
-      //String myDriver = "com.mysql.jdbc.Driver";
-      //String myUrl = "jdbc:mysql://localhost/juicios";
 	  
 	  //HEROKU//
-      String myDriver = "com.mysql.jdbc.Driver";
-      String myUrl = "jdbc:mysql://us-cdbr-iron-east-01.cleardb.net/heroku_f071c2820739e5c";
       
       Connection conn = null;
       try {
           Class.forName(myDriver);
-          //LOCAL
-          //conn = DriverManager.getConnection(myUrl, "root", "root");
           
           //HEROKU
-          conn = DriverManager.getConnection(myUrl, "ba8bab4fa9f175", "9fecb251");
       } catch (SQLException e) {
           System.out.println(e.getMessage());
       } catch (ClassNotFoundException e) {
